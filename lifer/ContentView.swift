@@ -54,6 +54,8 @@ struct ContentView: View {
                        }.background(Color.white).keyboardType(UIKeyboardType.numberPad)
                         .multilineTextAlignment(.center)
                         .cornerRadius(14)
+                        .accessibilityIdentifier("redLife")
+                        
                       Button {
                           self.redPlayerLife = String(Int(self.redPlayerLife)! - 1)
                       } label: {
@@ -78,6 +80,7 @@ struct ContentView: View {
                    } label: {
                        Image(systemName: "return")
                    }.foregroundColor(Color.black)
+                    .accessibilityIdentifier("goBack")
                }
                VStack {
                   VStack {
@@ -104,6 +107,7 @@ struct ContentView: View {
                           .font(.largeTitle)
                         .multilineTextAlignment(.center)
                         .cornerRadius(14)
+                        .accessibilityIdentifier("blueLife")
                       
                       Button {
                           self.bluePlayerLife = String(Int(self.bluePlayerLife)! - 1)

@@ -11,7 +11,8 @@ struct MainMenu: View {
     @State var startingLife = "20"
     @State var rememberedStartingLife = "20"
     @State var gameStarted = false
-    
+    @FocusState private var isFocused: Bool
+
     var body: some View {
         NavigationView {
             VStack {
@@ -29,15 +30,18 @@ struct MainMenu: View {
                  .multilineTextAlignment(.center)
                  .textFieldStyle(.roundedBorder)
                  .frame(maxWidth: 100)
+                 .accessibilityIdentifier("startingLife")
+                 .focused($isFocused)
                 
                   Button(action: {
+                      self.isFocused = false
                       self.gameStarted = true
                   }) {
                     Text("Start Game").foregroundColor(Color.white).padding(14)
                   }.background(Color.blue).cornerRadius(14)
                    .fullScreenCover(isPresented: $gameStarted) {
                       ContentView(startingLife: self.startingLife)
-                   }
+                   }.disabled(self.startingLife == "")
             }.frame(maxWidth: .infinity, maxHeight: .infinity ).background(Color(red: 242 / 255, green: 242 / 255, blue: 242 / 255))
        }
     }

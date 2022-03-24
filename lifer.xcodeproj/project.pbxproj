@@ -16,6 +16,9 @@
 		FB576B4E27EB2D9F00BB06F1 /* liferUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB576B4D27EB2D9F00BB06F1 /* liferUITestsLaunchTests.swift */; };
 		FB576B5D27EB2EBC00BB06F1 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB576B5C27EB2EBC00BB06F1 /* MainMenu.swift */; };
 		FB576B6027EB2EF000BB06F1 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = FB576B5F27EB2EF000BB06F1 /* Introspect */; };
+		FBE969E027EBB0B500338AAD /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = FBE969DF27EBB0B500338AAD /* ViewInspector */; };
+		FBE969E127EBB0C600338AAD /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBE969DD27EBB02900338AAD /* XCTest.framework */; };
+		FBE969E327EBE7F200338AAD /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = FBE969E227EBE7F200338AAD /* Introspect */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +50,7 @@
 		FB576B4B27EB2D9F00BB06F1 /* liferUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = liferUITests.swift; sourceTree = "<group>"; };
 		FB576B4D27EB2D9F00BB06F1 /* liferUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = liferUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		FB576B5C27EB2EBC00BB06F1 /* MainMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
+		FBE969DD27EBB02900338AAD /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FBE969E327EBE7F200338AAD /* Introspect in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,6 +74,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FBE969E127EBB0C600338AAD /* XCTest.framework in Frameworks */,
+				FBE969E027EBB0B500338AAD /* ViewInspector in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +89,7 @@
 				FB576B4027EB2D9F00BB06F1 /* liferTests */,
 				FB576B4A27EB2D9F00BB06F1 /* liferUITests */,
 				FB576B2E27EB2D9C00BB06F1 /* Products */,
+				FBE969DC27EBB02800338AAD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -132,6 +140,14 @@
 			path = liferUITests;
 			sourceTree = "<group>";
 		};
+		FBE969DC27EBB02800338AAD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FBE969DD27EBB02900338AAD /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -169,6 +185,9 @@
 				FB576B3F27EB2D9F00BB06F1 /* PBXTargetDependency */,
 			);
 			name = liferTests;
+			packageProductDependencies = (
+				FBE969E227EBE7F200338AAD /* Introspect */,
+			);
 			productName = liferTests;
 			productReference = FB576B3D27EB2D9F00BB06F1 /* liferTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -187,6 +206,9 @@
 				FB576B4927EB2D9F00BB06F1 /* PBXTargetDependency */,
 			);
 			name = liferUITests;
+			packageProductDependencies = (
+				FBE969DF27EBB0B500338AAD /* ViewInspector */,
+			);
 			productName = liferUITests;
 			productReference = FB576B4727EB2D9F00BB06F1 /* liferUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
@@ -225,6 +247,7 @@
 			mainGroup = FB576B2427EB2D9C00BB06F1;
 			packageReferences = (
 				FB576B5E27EB2EF000BB06F1 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
+				FBE969D927EBAF6300338AAD /* XCRemoteSwiftPackageReference "ViewInspector" */,
 			);
 			productRefGroup = FB576B2E27EB2D9C00BB06F1 /* Products */;
 			projectDirPath = "";
@@ -605,10 +628,28 @@
 				kind = branch;
 			};
 		};
+		FBE969D927EBAF6300338AAD /* XCRemoteSwiftPackageReference "ViewInspector" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/nalexn/ViewInspector";
+			requirement = {
+				branch = 0.9.2;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
 		FB576B5F27EB2EF000BB06F1 /* Introspect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FB576B5E27EB2EF000BB06F1 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
+			productName = Introspect;
+		};
+		FBE969DF27EBB0B500338AAD /* ViewInspector */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FBE969D927EBAF6300338AAD /* XCRemoteSwiftPackageReference "ViewInspector" */;
+			productName = ViewInspector;
+		};
+		FBE969E227EBE7F200338AAD /* Introspect */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = FB576B5E27EB2EF000BB06F1 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
 			productName = Introspect;

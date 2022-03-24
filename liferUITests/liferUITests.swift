@@ -19,23 +19,38 @@ class liferUITests: XCTestCase {
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // UI tests must launch the application that they test.
         let app = XCUIApplication()
-        app.launch()
-
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        app.buttons["goBack"].tap()
+        let startingLife = app.textFields["startingLife"]
+        startingLife.tap()
+        startingLife.typeText("20")
+        let done = app.buttons["Done"]
+        done.tap()
     }
 
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTApplicationLaunchMetric()]) {
-                XCUIApplication().launch()
-            }
-        }
+    func testStartingLife20() throws {
+        let app = XCUIApplication()
+        app.buttons["Start Game"].tap()
+        let redLife = app.textFields["redLife"]
+        XCTAssertEqual(redLife.value as! String, "20")
+        let blueLife = app.textFields["blueLife"]
+        XCTAssertEqual(blueLife.value as! String, "20")
     }
+    
+    func testCustomStartingLife() throws {
+        let app = XCUIApplication()
+        let startingLife = app.textFields["startingLife"]
+        startingLife.tap()
+        startingLife.typeText("25")
+        let done = app.buttons["Done"]
+        done.tap()
+        app.buttons["Start Game"].tap()
+
+        let redLife = app.textFields["redLife"]
+        XCTAssertEqual(redLife.value as! String, "25")
+        let blueLife = app.textFields["blueLife"]
+        XCTAssertEqual(blueLife.value as! String, "25")
+    }
+
+
 }
