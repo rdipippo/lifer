@@ -17,6 +17,7 @@ struct MainMenu: View {
         NavigationView {
             VStack {
                 Text("Starting Life").foregroundColor(Color.black).font(.largeTitle)
+                
                 TextField("", text: $startingLife, onEditingChanged: { (editing) in
                   if editing {
                      self.rememberedStartingLife = startingLife
@@ -26,7 +27,8 @@ struct MainMenu: View {
                   }
                 }).introspectTextField { (textField) in
                     textField.addDoneButton(textField: textField)
-                }.keyboardType(UIKeyboardType.numberPad)
+                }
+                 .keyboardType(UIKeyboardType.numberPad)
                  .multilineTextAlignment(.center)
                  .textFieldStyle(.roundedBorder)
                  .frame(maxWidth: 100)
@@ -40,7 +42,7 @@ struct MainMenu: View {
                     Text("Start Game").foregroundColor(Color.white).padding(14)
                   }.background(Color.blue).cornerRadius(14)
                    .fullScreenCover(isPresented: $gameStarted) {
-                      ContentView(startingLife: self.startingLife)
+                       ContentView(startingLife: self.$startingLife.wrappedValue)
                    }.disabled(self.startingLife == "")
             }.frame(maxWidth: .infinity, maxHeight: .infinity ).background(Color(red: 242 / 255, green: 242 / 255, blue: 242 / 255))
        }

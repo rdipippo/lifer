@@ -16,6 +16,7 @@
 		FB576B4E27EB2D9F00BB06F1 /* liferUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB576B4D27EB2D9F00BB06F1 /* liferUITestsLaunchTests.swift */; };
 		FB576B5D27EB2EBC00BB06F1 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB576B5C27EB2EBC00BB06F1 /* MainMenu.swift */; };
 		FB576B6027EB2EF000BB06F1 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = FB576B5F27EB2EF000BB06F1 /* Introspect */; };
+		FBA9C4C12801A4D900DBDA60 /* LifeCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA9C4C02801A4D900DBDA60 /* LifeCounter.swift */; };
 		FBE969E027EBB0B500338AAD /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = FBE969DF27EBB0B500338AAD /* ViewInspector */; };
 		FBE969E127EBB0C600338AAD /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBE969DD27EBB02900338AAD /* XCTest.framework */; };
 		FBE969E327EBE7F200338AAD /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = FBE969E227EBE7F200338AAD /* Introspect */; };
@@ -50,6 +51,7 @@
 		FB576B4B27EB2D9F00BB06F1 /* liferUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = liferUITests.swift; sourceTree = "<group>"; };
 		FB576B4D27EB2D9F00BB06F1 /* liferUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = liferUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		FB576B5C27EB2EBC00BB06F1 /* MainMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
+		FBA9C4C02801A4D900DBDA60 /* LifeCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeCounter.swift; sourceTree = "<group>"; };
 		FBE969DD27EBB02900338AAD /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
@@ -108,6 +110,7 @@
 			children = (
 				FB576B5C27EB2EBC00BB06F1 /* MainMenu.swift */,
 				FB576B3027EB2D9C00BB06F1 /* liferApp.swift */,
+				FBA9C4C02801A4D900DBDA60 /* LifeCounter.swift */,
 				FB576B3227EB2D9C00BB06F1 /* ContentView.swift */,
 				FB576B3427EB2D9F00BB06F1 /* Assets.xcassets */,
 				FB576B3627EB2D9F00BB06F1 /* Preview Content */,
@@ -291,6 +294,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FBA9C4C12801A4D900DBDA60 /* LifeCounter.swift in Sources */,
 				FB576B3327EB2D9C00BB06F1 /* ContentView.swift in Sources */,
 				FB576B5D27EB2EBC00BB06F1 /* MainMenu.swift in Sources */,
 				FB576B3127EB2D9C00BB06F1 /* liferApp.swift in Sources */,
