@@ -31,9 +31,9 @@ class liferUITests: XCTestCase {
     func testStartingLife20() throws {
         let app = XCUIApplication()
         app.buttons["Start Game"].tap()
-        let redLife = app.textFields["redLife"]
+        let redLife = app.textFields["0Life"]
         XCTAssertEqual(redLife.value as! String, "20")
-        let blueLife = app.textFields["blueLife"]
+        let blueLife = app.textFields["1Life"]
         XCTAssertEqual(blueLife.value as! String, "20")
     }
     
@@ -46,22 +46,22 @@ class liferUITests: XCTestCase {
         done.tap()
         app.buttons["Start Game"].tap()
 
-        let redLife = app.textFields["redLife"]
+        let redLife = app.textFields["0Life"]
         XCTAssertEqual(redLife.value as! String, "25")
-        let blueLife = app.textFields["blueLife"]
+        let blueLife = app.textFields["1Life"]
         XCTAssertEqual(blueLife.value as! String, "25")
     }
     
     func testBlueLife() {
         let app = XCUIApplication()
         app.buttons["Start Game"].tap()
-        let blueLifeUp = app.buttons["blueLifeUp"]
+        let blueLifeUp = app.buttons["0LifeUp"]
         blueLifeUp.tap()
         
-        let blueLife = app.textFields["blueLife"]
+        let blueLife = app.textFields["0Life"]
         XCTAssertEqual(blueLife.value as! String, "21")
         
-        let blueLifeDown = app.buttons["blueLifeDown"]
+        let blueLifeDown = app.buttons["0LifeDown"]
         blueLifeDown.tap()
         blueLifeDown.tap()
         
@@ -84,13 +84,13 @@ class liferUITests: XCTestCase {
     func testRedLife() {
         let app = XCUIApplication()
         app.buttons["Start Game"].tap()
-        let redLifeUp = app.buttons["redLifeUp"]
+        let redLifeUp = app.buttons["1LifeUp"]
         redLifeUp.tap()
         
-        let redLife = app.textFields["redLife"]
+        let redLife = app.textFields["1Life"]
         XCTAssertEqual(redLife.value as! String, "21")
         
-        let redLifeDown = app.buttons["redLifeDown"]
+        let redLifeDown = app.buttons["1LifeDown"]
         redLifeDown.tap()
         redLifeDown.tap()
         
@@ -114,19 +114,19 @@ class liferUITests: XCTestCase {
         let app = XCUIApplication()
         app.buttons["Start Game"].tap()
         
-        let redLifeUp = app.buttons["redLifeUp"]
+        let redLifeUp = app.buttons["0LifeUp"]
         redLifeUp.tap()
         
-        let blueLifeDown = app.buttons["blueLifeDown"]
+        let blueLifeDown = app.buttons["1LifeDown"]
         blueLifeDown.tap()
         
         let resetLife = app.buttons["resetLife"]
         resetLife.tap()
         
-        let redLife = app.textFields["redLife"]
+        let redLife = app.textFields["0Life"]
         XCTAssertEqual(redLife.value as! String, "20")
         
-        let blueLife = app.textFields["blueLife"]
+        let blueLife = app.textFields["0Life"]
         XCTAssertEqual(blueLife.value as! String, "20")
     }
     
@@ -139,19 +139,19 @@ class liferUITests: XCTestCase {
         done.tap()
         app.buttons["Start Game"].tap()
         
-        let redLifeUp = app.buttons["redLifeUp"]
+        let redLifeUp = app.buttons["0LifeUp"]
         redLifeUp.tap()
         
-        let blueLifeDown = app.buttons["blueLifeDown"]
+        let blueLifeDown = app.buttons["1LifeDown"]
         blueLifeDown.tap()
         
         let resetLife = app.buttons["resetLife"]
         resetLife.tap()
         
-        let redLife = app.textFields["redLife"]
+        let redLife = app.textFields["0Life"]
         XCTAssertEqual(redLife.value as! String, "25")
         
-        let blueLife = app.textFields["blueLife"]
+        let blueLife = app.textFields["1Life"]
         XCTAssertEqual(blueLife.value as! String, "25")
     }
 

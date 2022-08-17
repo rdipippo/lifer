@@ -6,34 +6,31 @@
 //
 
 import SwiftUI
+import Combine
 
 struct LifeCounter: View {
-    var lifeCount: Binding<String>
-    @State var rememberedLifeCount: String
-    var color: String
-    
-    public init(lifeCount: Binding<String>, color: String) {
-        self.lifeCount = lifeCount
-        self.color = color
-        _rememberedLifeCount = State(wrappedValue: "")
-    }
+    @Binding var lifeCount : String
+    @State var testPrefix : Int
     
     var body: some View {
+        var rememberedLifeCount : String = ""
+
         VStack {
             Button {
-                self.lifeCount.wrappedValue = String(Int(self.lifeCount.wrappedValue)! + 1)
+                var lifeCountAsInt = Int(self.lifeCount)
+                self.lifeCount = String(lifeCountAsInt! + 1)
             } label: {
                 Image(systemName: "arrow.up")
             }.foregroundColor(Color.white)
-                .disabled(lifeCount.wrappedValue == "")
-                .accessibilityIdentifier(self.color + "LifeUp")
+                .disabled(self.lifeCount == "")
+                .accessibilityIdentifier(String(self.testPrefix) + "LifeUp")
 
-            TextField("", text: lifeCount, onEditingChanged: { (editing) in
+            TextField("", text: $lifeCount, onEditingChanged: { (editing) in
                 if editing {
-                    self.rememberedLifeCount = self.lifeCount.wrappedValue
-                    self.lifeCount.wrappedValue = ""
-                } else if (self.lifeCount.wrappedValue == "") {
-                    self.lifeCount.wrappedValue = self.rememberedLifeCount
+                    rememberedLifeCount = String(self.lifeCount)
+                    self.lifeCount = ""
+                } else if (self.lifeCount == "") {
+                    self.lifeCount = rememberedLifeCount
                 }
             }).frame(
               maxWidth: 100,
@@ -46,15 +43,17 @@ struct LifeCounter: View {
               .keyboardType(UIKeyboardType.numberPad)
               .multilineTextAlignment(.center)
               .cornerRadius(14)
-              .accessibilityIdentifier(self.color + "Life")
+              .accessibilityIdentifier(String(self.testPrefix) + "Life")
               
             Button {
-                self.lifeCount.wrappedValue = String(Int(self.lifeCount.wrappedValue)! - 1)
+                var lifeCountAsInt = Int(self.lifeCount)
+                self.lifeCount = String(lifeCountAsInt! - 1)
             } label: {
                 Image(systemName: "arrow.down")
             }.foregroundColor(Color.white)
-                .disabled(lifeCount.wrappedValue == "")
-                .accessibilityIdentifier(self.color + "LifeDown")
-        }
+                .disabled(self.lifeCount == "")
+                .accessibilityIdentifier(String(self.testPrefix) + "LifeDown")
+        
+            }
     }
 }

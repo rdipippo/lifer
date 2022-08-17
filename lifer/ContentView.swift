@@ -11,30 +11,29 @@ import Foundation
 
 struct ContentView: View {
     @Environment(\.dismiss)  var dismiss
-
-    @State var redPlayerLife: String
-    @State var bluePlayerLife: String
-    @State var rememberedStartingLife: String
+    @State var rememberedStartingLife: [String]
+    var rememberedStartingLife2: [String]
     
-    public init(startingLife: String) {
-        _redPlayerLife = State(wrappedValue: startingLife)
-        _bluePlayerLife = State(wrappedValue: startingLife)
-        _rememberedStartingLife = State(wrappedValue: startingLife)
+    var colors = [Color.red, Color.blue, Color.green, Color.yellow, Color.purple, Color.gray]
+    var numPlayers = 2
+    var startingLife = "0"
+    
+    public init(startingLife: String, numPlayers: String) {
+        self.numPlayers = Int(numPlayers)!
+        self.startingLife = startingLife
+        _rememberedStartingLife = State(wrappedValue: [String](repeating: startingLife, count: Int(numPlayers)!))
+        self.rememberedStartingLife2 = [String](repeating: startingLife, count: Int(numPlayers)!)
     }
-    
+        
     var body: some View {
+
         GeometryReader { geometry in
            VStack {
-               VStack {
-                   LifeCounter(lifeCount: self.$redPlayerLife, color: "red").frame(
-                     maxWidth: .infinity,
-                     maxHeight: geometry.size.height * 0.50
-                  ).background(Color.red)
-               }
                HStack {
                    Button {
-                       self.redPlayerLife = rememberedStartingLife
-                       self.bluePlayerLife = rememberedStartingLife
+                       // we  need to maintain a copy of the array because we can't reassign the state array.
+                       rememberedStartingLife.removeAll()
+                       rememberedStartingLife = rememberedStartingLife + rememberedStartingLife2
                    } label: {
                        Image(systemName: "arrow.clockwise")
                    }.foregroundColor(Color.black)
@@ -46,12 +45,15 @@ struct ContentView: View {
                        Image(systemName: "return")
                    }.foregroundColor(Color.black)
                     .accessibilityIdentifier("goBack")
-               }
+               }.frame(maxWidth: .infinity,
+                       maxHeight: geometry.size.height * 0.1)
                VStack {
-                   LifeCounter(lifeCount: self.$bluePlayerLife, color: "blue").frame(
-                     maxWidth: .infinity,
-                     maxHeight: geometry.size.height * 0.50
-                  ).background(Color.blue)
+                   ForEach(0..<numPlayers, id: \.self) {player in
+                       LifeCounter(lifeCount: self.$rememberedStartingLife[player], testPrefix: player).frame(
+                         maxWidth: .infinity,
+                         maxHeight: geometry.size.height * 0.45
+                      ).background(colors[player])
+                   }
                }
            }
         }

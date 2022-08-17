@@ -9,6 +9,7 @@ import SwiftUI
 
 @main
 struct liferApp: App {
+
     var body: some Scene {
         WindowGroup {
             MainMenu()
